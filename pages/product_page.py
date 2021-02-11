@@ -16,3 +16,9 @@ class ProductPage(BasePage):
         book_name = self.browser.find_element(*ProductPageLocators.MAIN_BOOK_NAME).text
         book_name_msg = self.browser.find_element(*ProductPageLocators.BOOK_NAME_MSG).text
         assert book_name == book_name_msg
+
+    def guest_cant_see_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MSG)
+
+    def success_message_should_be_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MSG)
